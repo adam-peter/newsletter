@@ -1,0 +1,14 @@
+.form-signin {
+  width: 400px !important;
+}
+
+.mb-4{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.form-control::placeholder {
+  color: #5283b3;
+  opacity: 0.5;
+}
