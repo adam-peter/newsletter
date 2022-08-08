@@ -28,6 +28,7 @@ app.post("/", function(req, res){
   };
  
   async function run() {
+    try{
       const response = await mailchimp.lists.addListMember(listId, {
         email_address: subscribingUser.email,
         status: "subscribed",
@@ -38,8 +39,13 @@ app.post("/", function(req, res){
       });
  
       console.log(
-        `Successfully added contact as an audience member. The contact's id is ${response.id}.`
+        `Successfully added contact as an audience member.`
       );
+      res.sendFile(__dirname + "/public/pages/success.html");
+    }catch (e){
+      res.sendFile(__dirname + "/public/pages/fail.html");
+    }
+      
   }
  
   run();
@@ -51,9 +57,5 @@ app.listen(3000, function () {
 
 
 
-//API key:
-//
 
-//List ID:
-//b706122d1b
 
