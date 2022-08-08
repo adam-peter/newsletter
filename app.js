@@ -1,14 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mailchimp = require('@mailchimp/mailchimp_marketing');
+
+const secret = require("./secret.json");
+const API = secret.API;
+const listId = secret.listId;
  
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"));
  
 mailchimp.setConfig({
-  apiKey: "a85355cdfb3c9c526b2d97a712ef0e78-us8",
-  server: "us8"
+  apiKey: API,
+  server: API.slice(-3)
 });
  
 app.get("/", function(req, res){
@@ -17,7 +21,6 @@ app.get("/", function(req, res){
  
 app.post("/", function(req, res){
  
-  const listId = "b706122d1b";
   const subscribingUser = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -49,7 +52,7 @@ app.listen(3000, function () {
 
 
 //API key:
-//a85355cdfb3c9c526b2d97a712ef0e78-us8
+//
 
 //List ID:
 //b706122d1b
