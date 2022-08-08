@@ -1,2 +1,2 @@
-# email-list
-Repo for a web application, that gathers user emails!
+# newsletter
+Repo for a web application, that saves user entered emails to a Mailchimp email list
